@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features - Clementsvale Oasis</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; background: var(--light-gray); min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
+        h2 { font-size: 3rem; text-align: center; color: var(--primary-blue); margin-bottom: 3rem; text-shadow: 2px 2px 0 var(--accent-orange); }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .feature { background: var(--white); padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s; border: 3px solid transparent; }
+        .feature:hover { transform: translateY(-10px); border-color: var(--turquoise); }
+        .feature i { font-size: 4rem; color: var(--accent-orange); margin-bottom: 1rem; }
+        .feature h3 { font-size: 1.8rem; color: var(--primary-blue); margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+    <nav><!-- Same nav as above --></nav>
+    <div class="support-badge">🛒 Support Local Nova Scotia Business!</div>
+
+    <section>
+        <h2>Why Choose Clementsvale Oasis?</h2>
+        <div class="feature-grid">
+            <div class="feature">
+                <i>🏖️</i><h3>Ocean Views</h3><p>Breathtaking Annapolis Basin views from your private deck.</p>
+            </div>
+            <div class="feature">
+                <i>🛏️</i><h3>Cozy Comfort</h3><p>Fully equipped kitchen, comfy beds, modern amenities.</p>
+            </div>
+            <div class="feature">
+                <i>🌳</i><h3>Nature Escape</h3><p>Minutes from beaches, trails, and Clementsvale's charm.</p>
+            </div>
+            <div class="feature">
+                <i>👨‍👩‍👧‍👦</i><h3>Family Friendly</h3><p>Space for groups, kids toys, pet-friendly options.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer><!-- Same footer --></footer>
+</body>
+</html>

@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap');
+
+/* Bold Orange-Pink Pop Art with Sophisticated Polish */
+:root {
+    --pop-orange: #FF4500;      /* Vibrant fiery orange */
+    --deep-pink: #C71585;       /* Rich magenta pink */
+    --hot-pink: #FF1493;        /* Electric hot pink */
+    --soft-orange: #FFA07A;     /* Warm peach accent */
+    --white: #FFFFFF;
+    --dark-gray: #2C1810;       /* Sophisticated charcoal */
+    --light-cream: #FFF8F0;     /* Elegant off-white */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    color: var(--dark-gray);
+    overflow-x: hidden;
+    background: var(--light-cream);
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 700; }
+
+nav {
+    background: linear-gradient(135deg, var(--pop-orange), var(--deep-pink));
+    padding: 1.2rem 0;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 20px rgba(255,69,0,0.3);
+}
+
+.nav-container {
+    max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo {
+    font-size: 2rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 2px;
+}
+
+.nav-links { display: flex; list-style: none; }
+
+.nav-links a {
+    color: var(--white); text-decoration: none; padding: 1rem 1.8rem; font-weight: 600; transition: all 0.4s ease; border-radius: 30px; position: relative; overflow: hidden;
+}
+
+.nav-links a::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--hot-pink); transition: left 0.4s; z-index: -1;
+}
+
+.nav-links a:hover::before { left: 0; }
+.nav-links a:hover { transform: translateY(-3px); text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+
+.btn {
+    background: linear-gradient(45deg, var(--hot-pink), var(--deep-pink));
+    color: var(--white); padding: 1.1rem 2.8rem; font-size: 1.1rem; font-weight: 600;
+    border: none; border-radius: 50px; cursor: pointer; text-decoration: none; display: inline-block;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); box-shadow: 0 6px 25px rgba(255,20,147,0.4);
+    text-transform: uppercase; letter-spacing: 1.5px; position: relative; overflow: hidden;
+}
+
+.btn::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s;
+}
+
+.btn:hover::before { left: 100%; }
+.btn:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 40px rgba(255,20,147,0.6); }
+
+.btn-airbnb { background: linear-gradient(45deg, #FF5A5F, #FF1744); box-shadow: 0 6px 25px rgba(255,90,95,0.4); }
+.btn-airbnb:hover { box-shadow: 0 12px 40px rgba(255,90,95,0.6); }
+.btn-vrbo { background: linear-gradient(45deg, #FF5A1F, #FF5722); box-shadow: 0 6px 25px rgba(255,90,31,0.4); }
+.btn-vrbo:hover { box-shadow: 0 12px 40px rgba(255,90,31,0.6); }
+
+.support-badge {
+    position: fixed; top: 90px; right: 20px; background: var(--hot-pink); color: var(--white);
+    padding: 0.7rem 1.2rem; border-radius: 30px; font-size: 0.95rem; font-weight: 600;
+    box-shadow: 0 6px 20px rgba(255,20,147,0.4); z-index: 1000; animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+footer {
+    background: linear-gradient(135deg, var(--dark-gray), var(--pop-orange)); color: var(--white);
+    text-align: center; padding: 3rem 2rem; font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-links { flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: linear-gradient(135deg, var(--pop-orange), var(--deep-pink)); }
+    .btn { display: block; margin: 1rem auto; }
+}
