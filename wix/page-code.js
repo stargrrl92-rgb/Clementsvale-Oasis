@@ -1,0 +1,9 @@
+import {getAvailability,requestStay} from 'backend/oasisCalendar.web';
+let selected=null,busy=false;
+$w.onReady(()=>{
+ $w('#submitRequest').disable();
+ async function refresh(){let state;try{state=await getAvailability();}catch{state={ok:false,error:'Availability unavailable. Contact Sherry.'};}$w('#availabilityCalendar').postMessage({channel:'oasis-calendar',type:'availability',state});}
+ $w('#availabilityCalendar').onMessage(async event=>{const m=event.data;if(!m||m.channel!=='oasis-calendar')return;if(m.type==='ready'||m.type==='refresh')await refresh();if(m.type==='clear'){selected=null;$w('#selectedDates').text='Choose check-in and check-out above.';}if(m.type==='selection'&&/^\d{4}-\d{2}-\d{2}$/.test(m.startDate||'')&&/^\d{4}-\d{2}-\d{2}$/.test(m.endDate||'')){selected={startDate:m.startDate,endDate:m.endDate};$w('#selectedDates').text=`Check-in: ${m.startDate} · Check-out: ${m.endDate}`;}});
+ $w('#requestCaptcha').onVerified(()=>{if(!busy)$w('#submitRequest').enable();});$w('#requestCaptcha').onTimeout(()=>$w('#submitRequest').disable());$w('#requestCaptcha').onError(()=>$w('#submitRequest').disable());
+ $w('#submitRequest').onClick(async()=>{if(busy)return;if(!selected){$w('#requestStatus').text='Select dates first.';return;}busy=true;$w('#submitRequest').disable();$w('#requestStatus').text='Checking availability and saving your request…';try{const result=await requestStay({...selected,name:$w('#guestName').value,email:$w('#guestEmail').value,phone:$w('#guestPhone').value,guests:$w('#guestCount').value,notes:$w('#guestNotes').value,token:$w('#requestCaptcha').token});$w('#requestStatus').text=result.ok?result.message:result.error;await refresh();}catch{$w('#requestStatus').text='Connection failed. Contact Sherry if unsure whether the request was saved.';}finally{busy=false;$w('#requestCaptcha').reset();$w('#submitRequest').disable();}});
+});
